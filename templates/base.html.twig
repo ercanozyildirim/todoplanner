@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            table {
+                margin-top: -50px;
+            }
+            th{
+                padding-right: 20px;
+            }
+        </style>
+    {% endblock %}
+    {% block javascripts %}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <div style="width: 100%; text-align: center;">
+        <h1>Haftalık Plan</h1>
+        <table style="margin: auto;">
+            <thead>
+            <tr>
+                <th>Task Adı</th>
+                <th>Developer Adı</th>
+                <th>Task Süresi</th>
+                <th>Task Zorluğu</th>
+                <th>Toplam Efor</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for task in to_do_list %}
+                <tr>
+                    <td>{{ task.taskName }}</td>
+                    <td>{{ task.devName }}</td>
+                    <td>{{ task.taskDuration }}</td>
+                    <td>{{ task.taskDifficulty }}</td>
+                    <td>{{ task.totalEffort }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">No tasks found.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+</body>
+</html>
